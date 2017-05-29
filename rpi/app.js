@@ -19,31 +19,23 @@ app.use(function(req, res, next) {
 
 app.get('/forward', function (req, res) {
   console.log("forward");
-  left.forward(function(err) {
-  });
-
-  right.forward(function(err) {
-  });
+  left.forward();
+  right.forward();
 
   res.send('OK');
 })
 
 app.get('/backward', function (req, res) {
   console.log("backward");
-  left.backward(function(err) {
-  });
-
-  right.backward(function(err) {
-  });
+  left.backward();
+  right.backward();
 
   res.send('OK');
 })
 
 app.get('/left', function (req, res) {
   console.log("left");
-  left.forward(function(err) {
-  });
-
+  left.forward();
   right.stop();
 
   res.send('OK');
@@ -52,9 +44,7 @@ app.get('/left', function (req, res) {
 app.get('/right', function (req, res) {
   console.log("right");
   left.stop();
-
-  right.forward(function(err) {
-  });
+  right.forward();
 
   res.send('OK');
 })

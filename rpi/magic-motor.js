@@ -7,11 +7,12 @@ var Motor = function (pin1, pin2) {
 
 Motor.prototype.export = function () {
   gpio.setup(this._pin1, gpio.DIR_OUT);
-  gpio.setup(this._pin2, gpio.DIR_OUT, function () {
+  gpio.setup(this._pin2, gpio.DIR_OUT, function (err) {
+    if(err) throw err;
   });
 }
 
-Motor.prototype.forward = function (err) {
+Motor.prototype.forward = function () {
   gpio.write(this._pin1, 1, function(err){
     if(err) throw err;
   });
@@ -20,7 +21,7 @@ Motor.prototype.forward = function (err) {
   });
 }
 
-Motor.prototype.backward = function (err) {
+Motor.prototype.backward = function () {
   gpio.write(this._pin1, 0, function(err){
     if(err) throw err;
   });
@@ -29,7 +30,7 @@ Motor.prototype.backward = function (err) {
   });
 }
 
-Motor.prototype.stop = function (err) {
+Motor.prototype.stop = function () {
   gpio.write(this._pin1, 0, function(err){
     if(err) throw err;
   });
