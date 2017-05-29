@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#box{
+  font-family: sans-serif;
+}
+
+.button{
+  width: 100px;
+  height: 100px;
+  background-color: #376cbe;
+  color: #ffffff;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+}
+
+.button:active{
+  background-color: #8ca9f4;
+}
+.left{
+  top: 100px;
+}
+.forward{
+  left: 100px;
+}
+.right{
+  left: 200px;
+  top: 100px;
+}
+.backward{
+  top: 200px;
+  left: 100px;
+}
+.stop{
+  top: 100px;
+  left: 100px;
+}

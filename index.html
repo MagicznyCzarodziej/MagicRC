@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Magic RC</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+      //This all is just temporary
+
+      var ip = "http://192.168.100.28:3000/";
+      var lastKey = 32;
+      var keys = [32,37,38,39,40];
+      function translateKey(code) {
+        switch (code) {
+          case 32:
+            return "stop";
+            break;
+          case 37:
+            return "left";
+            break;
+          case 38:
+            return "forward";
+            break;
+          case 39:
+            return "right";
+            break;
+          case 40:
+            return "backward";
+            break;
+          default:
+            return "stop";
+        }
+      }
+      function send() {
+        let x = translateKey(lastKey);
+        $.ajax({
+          url: ip + x,
+          success: function () {
+
+          }
+        });
+      }
+      $(function (){
+        $("html").keydown(function (e) {
+          if(lastKey != e.keyCode && keys.indexOf(e.keyCode) != -1){
+            lastKey = e.keyCode;
+            console.log(e.key);
+            send();
+          }
+        });
+
+        $("html").keyup(function (e) {
+          lastKey = 32;
+          if(keys.indexOf(e.keyCode) != -1) send();
+          console.log("none");
+        });
+      });
+    </script>
+  </body>
+</html>
